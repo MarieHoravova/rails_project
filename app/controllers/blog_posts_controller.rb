@@ -2,6 +2,7 @@ class BlogPostsController < ApplicationController
     before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
     # Umožňuje smazání
     # @blog_post = BlogPost.find(params[:id])
+    before_action :authenticate_user!, except: [:index, :show]
 
     def index
         @blog_posts = BlogPost.all
